@@ -34,6 +34,10 @@
             </ul>
         </section>
         <section>
+            “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. In the original experiment leading to the "Broken Window Theory," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within hours. By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), you don't want to be the first one to make a mess.”
+            <br> ― Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
+        </section>
+        <section>
             <section>
                 <h1>Code Smell</h1>
                 <p>Code Smell can be misleading. It doesn't mean that something is broken - or even that there is a tangible bug. It refers to more of an intuition - one based in a set of theories and practices aligned with a school of thought. In respect to programing they are not even things that are technically incorrect - rather they most often indicate overarching weaknesses in design that inhibit future development or increase the risk for bugs and / or failures over the lifetime of the program.</p>
@@ -252,31 +256,7 @@ exports['@require'] = [
                 <p>It is also important to note that this principle focuses mostly on conceptual separation of ideas that are reflected in our code.</p>
             </section>
         </section>
-
-
-        <section>
-            <h2>Pretty Code</h2>
-					<pre><code class="hljs" data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-            <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-        </section>
-
     </div>
-
 </div>
 
 <script src="node_modules/reveal.js/lib/js/head.min.js"></script>

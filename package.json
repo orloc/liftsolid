@@ -1,0 +1,12 @@
+{
+  "name": "SOLIDLIFT",
+  "version": "3.3.0",
+  "description": "Presentation on Angular Best Practices // 101",
+  "author": {
+    "name": "Grant Tepper"
+  },
+  "dependencies": {
+    "reveal.js": "^3.3.0"
+  },
+  "license": "MIT"
+}

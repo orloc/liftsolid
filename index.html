@@ -279,10 +279,68 @@ exports['@require'] = [
                 <p>"A class should have only one reason to change." - Robert C. Martin</p>
             </section>
             <section>
+                product list page with categoy information in the view no model all in the controller
                 <h2>Doing too much</h2>
             </section>
             <section>
-                <h2>Everything in its place</h2>
+                nicely architected angular app with srvices / directives
+                <h2>Separated into pieces</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Open Close Principle</h2>
+                <p>
+                    Modules / Classes should be open for extension - but closed for modification.
+                    <br>
+                    Open for extension means that an entity should be able to adapt to change
+                    <br>
+                    Closed for modification means that theses adaptations should not require significant / any source code changes.
+                </p>
+            </section>
+            <section>
+                <h2>It works</h2>
+                <a target="_blank" href="https://gist.github.com/orloc/78a4c886a9edd1743ace8ea7a7a39b2e">Example</a>
+            </section>
+            <section>
+                <h2>Extensible</h2>
+                <a target="_blank" href="https://gist.github.com/orloc/cf365d1d1546fef73da4d65adf671202">Open for extension - closed for modification. Utilizing contract definition and composition - no inheritance.</a>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Liskov Substitution Principle</h2>
+                <p>
+                    This refers to the interoperability of objects or entities within an inheritance hierarchy.  <br>
+                    Derived types should be semantically equivalent to the anticipated behavior of its base type.
+                </p>
+                <p>There are strategies employed to mitigate violating the LSP in certian situations - to completely avoid LSP violations would require anticipating every possbile way a library of module was to be used.</p>
+            </section>
+            <section>
+                <h4>Contacts</h4>
+                <p>Use contacts to defined interfaces between caller and callee. A contracts can either manifest themselves are executable specifications ( in many compiled languages this is built in ) or with pre-conditions and error checking on misuse ( in languages like common js ).</p>
+                <h4>Avoid inheritance</h4>
+                <p>Inheritance leads to rigid architecture which is tightly coupled and hard to modify.  Prefer composition over inheretence.  There are two main advantages. Composition tends to lead to smaller more focused objects which thus are easier to maintain - and with traditional inheretence - because all types are directly derived from a base type - changes in the base type can inadvertantly cause issues downstream.</p>
+            </section>
+            <section>
+                <h2>Implementation tightly coupled Tile in our angular product list view</h2>
+            </section>
+            <section>
+                <h2>abstract away the tile from the things inside the tile and make sub types</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Interface segregation principle</h2>
+                <p>
+                </p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Dependency Inversion principle</h2>
+                <p>
+                </p>
             </section>
         </section>
     </div>

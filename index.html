@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:br="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -25,7 +25,7 @@
             <h1>Goals </h1>
             <ul class="small">
                 <li>
-                    Gain background in some schools of thought behind what makes code "good"
+                    Gain background in some schools of thought behind what makes code "good" - at least according to some people. <br> <a href="http://motherboard.vice.com/read/gods-lonely-programmer">This guy</a> would disagree.
                 </li>
                 <li>Learn and understand principles that help frame your decisions</li>
                 <li>See how these fundamental principles echo through best practices when using Angular JS ( but they apply to everything )</li>
@@ -34,8 +34,12 @@
             </ul>
         </section>
         <section>
-            “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. In the original experiment leading to the "Broken Window Theory," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within hours. By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), you don't want to be the first one to make a mess.”
-            <br> ― Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
+            <p>
+                “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. <br><br>
+                If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. <br><br>
+                In the original experiment leading to the "Broken Window Theory," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within hours. By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), you don't want to be the first one to make a mess.”
+                <br> ― Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
+            </p>
         </section>
         <section>
             <section>
@@ -195,13 +199,36 @@ exports['@require'] = [
                     </code>
                 </pre>
             </section>
+            <section>
+                <h2>What got better?</h2>
+                <ul>
+                    <li>Overall "at a glance" comprehension increased</li>
+                    <li>Removed concern of the implementation details of authentication away from our controller</li>
+                    <li>More testable</li>
+                    <li>Code that was moved out was further refactored to implement a defined interface and be more extensible</li>
+                </ul>
+            </section>
         </section>
         <section>
             <section>
                 <h1>KISS</h1>
-                <p>Complexity is an <a target="_blank" href="http://catb.org/~esr/writings/taoup/html/graphics/ch13.pdf">Interesting</a> subject. In software it is something to be avoided at all costs. <br>
-                    In general despite the complexity of behaviour software may produce - it should not itself be complex.<br>
-                    Rather seemingly complex software should be decomposed into simple ideally idempotent pieces which interact through strictly defined interfaces.</p>
+                <p>
+                    Complexity is an <a target="_blank" href="http://catb.org/~esr/writings/taoup/html/graphics/ch13.pdf">Interesting</a> subject.<br>
+                    In software it is something to be avoided at all costs. <br>
+                </p>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            There are many ways to solve a problem - when choosing the right solution - looking at the projected complexity of the problem at hand can help guide the applications general development.<br> e.g. when choosing between active record and data mapper when implementing a model layer.
+                        </p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p>
+                            In general despite the complexity of behaviour software may produce - it should not itself be complex.<br>
+                            Rather seemingly complex software should be decomposed into simple ideally idempotent pieces which interact through strictly defined interfaces. ( its hard )
+                        </p>
+                    </div>
+                </div>
                 <p class="small">
                     "It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience."<br>
                     <br>
@@ -211,10 +238,8 @@ exports['@require'] = [
             <section>
                 <h1>(T)DRY</h1>
                 <p>If you are about to duplicate some code.  Pause - stop and think.  If the thing you are doing can be abstracted out into a function or service without confounding the operation you are trying to accomplish - then do this.</p>
-                <p>When doing this - think about the general thing this code is accomplishing - if there is benefit in generalizing a solution to work outside of the context of its current use aim for that.</p>
-                <p>If it can't or for some reasons 'smells' funny - rethink your approach.</p>
                 <br>
-                <p>The T is for TRY - because sometimes under pressure we need to do horrible things.  We should ALWAYS take note of these things and make efforts to fix them.</p>
+                <p>The T is for TRY - because sometimes under pressure we need to do horrible things. We are also have our humanity with all its flaws. We should do our best to take note of these things and make efforts to fix them.</p>
                 <p>Knowing adding to code debt - and NOT fixing it - is like leaving dishes in the sink because you're rushing to work - but never doing them when you get home. Don't be this person.</p>
             </section>
         </section>
@@ -249,12 +274,15 @@ exports['@require'] = [
                 <p>
                     All things can be broken down into systems. Every system is made up of parts - and those parts of parts themselves.
                 </p>
-                <p>If you 'feel' something growing into something that it is not - this is a 'smell' that indicates the need for refactoring.</p>
-            </section>
-            <section>
+                <p>If you feel something growing into something that it is not - this is a 'smell' that indicates the need for refactoring.</p>
                 <p>Separation of Concerns or Cohesion in software all relate to the same principle and that is:</p>
                 <p>"A class should have only one reason to change." - Robert C. Martin</p>
-                <p>It is also important to note that this principle focuses mostly on conceptual separation of ideas that are reflected in our code.</p>
+            </section>
+            <section>
+                <h2>Doing too much</h2>
+            </section>
+            <section>
+                <h2>Everything in its place</h2>
             </section>
         </section>
     </div>

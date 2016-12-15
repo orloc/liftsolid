@@ -304,6 +304,9 @@ exports['@require'] = [
             </section>
             <section>
                 <h3>Strategies for drawing lines</h3>
+                <img src="img/gif.gif">
+            </section>
+            <section>
                 <ul>
                     <li><b>Structural boundaries</b> - File system organization component based, type based, etc etc - even the line count of functions.</li>
                     <li><b>Behavioural(role) boundaries</b> - e.g. you can think about an application as a set of behaviours - almost as if there were a group of people working together to achieve some task.  If two things start "doing" different things you know it might be time to refactor. Routing vs task delegation (controller) vs data retrival vs rendering etc</li>
@@ -325,11 +328,8 @@ exports['@require'] = [
             <section>
                 <h2>Open Close Principle</h2>
                 <p>"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification"</p>
-                <p>An entity is "open" when it can be extended and thus modified.  A consumer should be able to add new properties or methods to an exisiting entity.</p>
+                <p>An entity is "open" when it can be extended and thus modified.  A consumer should be able to add new properties or methods to an existing entity.</p>
                 <p>An entity is "closed" when it can be consumed by another entity.  This required a well defined API be provided and enforced.</p>
-            </section>
-            <section>
-                <h2>What does that even mean?</h2>
             </section>
             <section>
                 <h2>It works</h2>
@@ -338,6 +338,13 @@ exports['@require'] = [
             <section>
                 <h2>Extensible</h2>
                 <a target="_blank" href="https://gist.github.com/orloc/cf365d1d1546fef73da4d65adf671202">Open for extension - closed for modification. Utilizing contract definition and composition - no inheritance.</a>
+            </section>
+            <section>
+                <h2>What we did</h2>
+                <ul>
+                    <li><b>Strategy Pattern</b> - defines a family of algorithms - encapsulates each algorithm - makes each algorithm within a family interchangeable with one another</li>
+                    <li><b>Type Definition</b> - defined interfaces which represent types - these types of behavioural objects.</li>
+                </ul>
             </section>
         </section>
         <section>

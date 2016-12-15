@@ -15,6 +15,8 @@
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="css/highlightStyle1.css">
+    <style>
+    </style>
 </head>
 
 <body>
@@ -33,6 +35,32 @@
                 <li>Deep Dive into Angular-UI // complexAngularApplicationGoesHere ???</li>
             </ul>
         </section>
+        <section>
+            <section>
+                <h1>What is MVC?</h1>
+            </section>
+            <section>
+                <img style="background-color: white;" src="img/mvc_role_diagram.png">
+            </section>
+            <section>
+                <h3>Other Terms</h3>
+                <ul>
+                    <li><b>Service Layer</b> - sits between the controller and model to encapsulate business logic</li>
+                    <li><b>Abstract Class</b> - an entity that cannot have any concrete implementations</li>
+                    <li><b>Entity</b> - another name for a class or object - in the context on MVC often interchangeable with "model" as model refers to a layer not always a specific thing.</li>
+                    <li><b>API</b> - Application programmable interface - EVERYTHING has an API - a class provides an API via its methods - a function via its signature and so forth.</li>
+                    <li><b>Type(s)</b> - referring to a classification of data - or encapsulation of that data. In statically typed languages this is enforced by the compiler</li>
+                </ul>
+            </section>
+            <section>
+                <ul>
+                    <li><b>Interface</b> - defines an "abstract" type - like a blueprint - contains no code or data</li>
+                    <li><b>ORM</b> - Object Relation Mapper, solves the problem of <a href="https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">mismatch impedance</a></li>
+                    <li><b>Factory</b> - an object creation pattern which separate the creation of objects from their specific implementations</li>
+                </ul>
+            </section>
+        </section>
+
         <section>
             <p>
                 “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. <br><br>
@@ -271,13 +299,18 @@ exports['@require'] = [
         <section>
             <section>
                 <h2>Single Responsibility Principle</h2>
-                <p>
-                    All things can be broken down into systems. Every system is made up of parts - and those parts of parts themselves.
-                </p>
-                <p>If you feel something growing into something that it is not - this is a 'smell' that indicates the need for refactoring.</p>
-                <p>Separation of Concerns or Cohesion in software all relate to the same principle and that is:</p>
                 <p>"A class should have only one reason to change." - Robert C. Martin</p>
+                <p>The first point of the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a> - "Make each program do one thing well. ..."</p>
             </section>
+            <section>
+                <h3>Strategies for drawing lines</h3>
+                <ul>
+                    <li><b>Structural boundaries</b> - File system organization component based, type based, etc etc - even the line count of functions.</li>
+                    <li><b>Behavioural(role) boundaries</b> - e.g. you can think about an application as a set of behaviours - almost as if there were a group of people working together to achieve some task.  If two things start "doing" different things you know it might be time to refactor. Routing vs task delegation (controller) vs data retrival vs rendering etc</li>
+                    <li><b>Conceptual boundaries</b> - You see this in complex design patterns and dynamic programing or in application architecture. MVC, Complex Algorithms, ORM's</li>
+                </ul>
+            </section>
+            <!--
             <section>
                 product list page with categoy information in the view no model all in the controller
                 <h2>Doing too much</h2>
@@ -286,17 +319,17 @@ exports['@require'] = [
                 nicely architected angular app with srvices / directives
                 <h2>Separated into pieces</h2>
             </section>
+            -->
         </section>
         <section>
             <section>
                 <h2>Open Close Principle</h2>
-                <p>
-                    Modules / Classes should be open for extension - but closed for modification.
-                    <br>
-                    Open for extension means that an entity should be able to adapt to change
-                    <br>
-                    Closed for modification means that theses adaptations should not require significant / any source code changes.
-                </p>
+                <p>"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification"</p>
+                <p>An entity is "open" when it can be extended and thus modified.  A consumer should be able to add new properties or methods to an exisiting entity.</p>
+                <p>An entity is "closed" when it can be consumed by another entity.  This required a well defined API be provided and enforced.</p>
+            </section>
+            <section>
+                <h2>What does that even mean?</h2>
             </section>
             <section>
                 <h2>It works</h2>

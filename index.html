@@ -24,16 +24,28 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
         <section>
-            <h1>Goals </h1>
-            <ul class="small">
-                <li>
-                    Gain background in some schools of thought behind what makes code "good" - at least according to some people. <br> <a href="http://motherboard.vice.com/read/gods-lonely-programmer">This guy</a> would disagree.
-                </li>
-                <li>Learn and understand principles that help frame your decisions</li>
-                <li>See how these fundamental principles echo through best practices when using Angular JS ( but they apply to everything )</li>
-                <li>Use these things to make a ground up angular application</li>
-                <li>Deep Dive into Angular-UI // complexAngularApplicationGoesHere ???</li>
-            </ul>
+            <section>
+                <h1>Goals </h1>
+                <ul class="small">
+                    <li>
+                        Gain background in some schools of thought behind what makes code "good" - at least according to some people. <br> <a href="http://motherboard.vice.com/read/gods-lonely-programmer">This guy</a> would disagree.
+                    </li>
+                    <li>Learn and understand principles that help frame your decisions</li>
+                    <li>See how these fundamental principles echo through best practices when using Angular JS ( but they apply to everything )</li>
+                    <li>Use these things to make a ground up angular application</li>
+                    <li>Deep Dive into Angular-UI // complexAngularApplicationGoesHere ???</li>
+                    <li>...</li>
+                </ul>
+            </section>
+            <section>
+                <h2>What to expect</h2>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>... WIP</li>
+                </ul>
+            </section>
         </section>
         <section>
             <section>
@@ -240,36 +252,34 @@ exports['@require'] = [
         <section>
             <section>
                 <h1>KISS</h1>
+
                 <p>
                     Complexity is an <a target="_blank" href="http://catb.org/~esr/writings/taoup/html/graphics/ch13.pdf">Interesting</a> subject.<br>
                     In software it is something to be avoided at all costs. <br>
                 </p>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <p>
-                            There are many ways to solve a problem - when choosing the right solution - looking at the projected complexity of the problem at hand can help guide the applications general development.<br> e.g. when choosing between active record and data mapper when implementing a model layer.
-                        </p>
-                    </div>
-                    <div class="col-xs-6">
-                        <p>
-                            In general despite the complexity of behaviour software may produce - it should not itself be complex.<br>
-                            Rather seemingly complex software should be decomposed into simple ideally idempotent pieces which interact through strictly defined interfaces. ( its hard )
-                        </p>
-                    </div>
-                </div>
+                <p>
+                    There are many ways to solve a problem - when choosing the right solution - looking at the projected complexity of the problem at hand can help guide the applications general development.<br> e.g. when choosing between active record and data mapper when implementing a model layer.
+                </p>
+            </section>
+            <section>
+                <p>
+                    In general despite the complexity of behaviour software may produce - it should not itself be complex.<br>
+                    Rather seemingly complex software should be decomposed into simple ideally idempotent pieces which interact through strictly defined interfaces. ( its hard )
+                </p>
                 <p class="small">
                     "It can scarcely be denied that the supreme goal of all theory is to make the irreducible basic elements as simple and as few as possible without having to surrender the adequate representation of a single datum of experience."<br>
                     <br>
                     - Albert Einstein
                 </p>
             </section>
-            <section>
-                <h1>(T)DRY</h1>
-                <p>If you are about to duplicate some code.  Pause - stop and think.  If the thing you are doing can be abstracted out into a function or service without confounding the operation you are trying to accomplish - then do this.</p>
-                <br>
-                <p>The T is for TRY - because sometimes under pressure we need to do horrible things. We are also have our humanity with all its flaws. We should do our best to take note of these things and make efforts to fix them.</p>
-                <p>Knowing adding to code debt - and NOT fixing it - is like leaving dishes in the sink because you're rushing to work - but never doing them when you get home. Don't be this person.</p>
-            </section>
+
+        </section>
+        <section>
+            <h1>(T)DRY</h1>
+            <p>If you are about to duplicate some code.  Pause - stop and think.  If the thing you are doing can be abstracted out into a function or service without confounding the operation you are trying to accomplish - then do this.</p>
+            <br>
+            <p>The T is for TRY - because sometimes under pressure we need to do horrible things. We are also have our humanity with all its flaws. We should do our best to take note of these things and make efforts to fix them.</p>
+            <p>Knowing adding to code debt - and NOT fixing it - is like leaving dishes in the sink because you're rushing to work - but never doing them when you get home. Don't be this person.</p>
         </section>
         <section>
             <section>

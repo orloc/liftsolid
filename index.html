@@ -40,16 +40,17 @@
             <section>
                 <h2>What to expect</h2>
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>... WIP</li>
+                    <li>Terms / Definitions - Coding philosophy from the greats ( Gang of 4, Martin Fowler, Dennis Richie etc..) / Overview of SOLID - what it is - how to apply the principles</li>
+                    <li>Angular Overview - overview of angular specific terms and functionality. Understand how angular separates its concerns - and how to implement SOLID in the context of angular.</li>
+                    <li>Build an angular application from the ground up - using and not using these principles to feel the difference</li>
+                    <li>Where should we go from here? </li>
+                    <li>...</li>
                 </ul>
             </section>
         </section>
         <section>
             <section>
-                <h1>What is MVC?</h1>
+                <h2>What is <br>M(odel) V(iew) C(ontroller)?</h2>
             </section>
             <section>
                 <img style="background-color: white;" src="img/mvc_role_diagram.png">
@@ -66,6 +67,7 @@
             </section>
             <section>
                 <ul>
+                    <li><b>Cohesion</b> - the degree in which modules "belong" together</li>
                     <li><b>Interface</b> - defines an "abstract" type - like a blueprint - contains no code or data</li>
                     <li><b>ORM</b> - Object Relation Mapper, solves the problem of <a href="https://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">mismatch impedance</a></li>
                     <li><b>Factory</b> - an object creation pattern which separate the creation of objects from their specific implementations</li>
@@ -252,7 +254,6 @@ exports['@require'] = [
         <section>
             <section>
                 <h1>KISS</h1>
-
                 <p>
                     Complexity is an <a target="_blank" href="http://catb.org/~esr/writings/taoup/html/graphics/ch13.pdf">Interesting</a> subject.<br>
                     In software it is something to be avoided at all costs. <br>
@@ -308,7 +309,7 @@ exports['@require'] = [
 
         <section>
             <section>
-                <h2>Single Responsibility Principle</h2>
+                <h2>Single Responsibility Principle (SRP)</h2>
                 <p>"A class should have only one reason to change." - Robert C. Martin</p>
                 <p>The first point of the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">Unix Philosophy</a> - "Make each program do one thing well. ..."</p>
             </section>
@@ -336,7 +337,7 @@ exports['@require'] = [
         </section>
         <section>
             <section>
-                <h2>Open Close Principle</h2>
+                <h2>Open Close Principle (OCP)</h2>
                 <p>"software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification"</p>
                 <p>An entity is "open" when it can be extended and thus modified.  A consumer should be able to add new properties or methods to an existing entity.</p>
                 <p>An entity is "closed" when it can be consumed by another entity.  This required a well defined API be provided and enforced.</p>
@@ -359,21 +360,37 @@ exports['@require'] = [
         </section>
         <section>
             <section>
-                <h2>Liskov Substitution Principle</h2>
+                <h2>Liskov Substitution Principle (LSP)</h2>
                 <p>
                     This refers to the interoperability of objects or entities within an inheritance hierarchy.  <br>
                     Derived types should be semantically equivalent to the anticipated behavior of its base type.
                 </p>
-                <p>There are strategies employed to mitigate violating the LSP in certian situations - to completely avoid LSP violations would require anticipating every possbile way a library of module was to be used.</p>
+                <p>There are strategies employed to mitigate violating the LSP in certain situations - to completely avoid LSP violations would require anticipating every possible way a library of module was to be used.</p>
             </section>
             <section>
                 <h4>Contacts</h4>
-                <p>Use contacts to defined interfaces between caller and callee. A contracts can either manifest themselves are executable specifications ( in many compiled languages this is built in ) or with pre-conditions and error checking on misuse ( in languages like common js ).</p>
+                <p>Use contacts to defined interfaces between caller and callee. <br>A contracts can either manifest itself as executable specifications ( in many compiled languages this is built in ) <br>or with pre-conditions and error checking on misuse of a given entity in a specific context( in languages like common js ).</p>
+            </section>
+            <section>
                 <h4>Avoid inheritance</h4>
-                <p>Deep inheritance trees  lead to rigid architecture which is tightly coupled and hard to modify.  Prefer composition over inheretence.  There are two main advantages. Composition tends to lead to smaller more focused objects which thus are easier to maintain - and with traditional inheretence - because all types are directly derived from a base type - changes in the base type can inadvertantly cause issues downstream.</p>
+                <p>Deep inheritance trees  lead to rigid architecture which is tightly coupled and hard to modify.  Prefer composition over inheritance.  There are two main advantages. Composition tends to lead to smaller more focused objects which thus are easier to maintain - and with traditional inheretence - because all types are directly derived from a base type - changes in the base type can inadvertantly cause issues downstream.</p>
+                <p>"Favor object composition over class inheritance" -  Design Patterns – Elements of Reusable Object-Orineted Software by. Gamma, et. al.,</p>
             </section>
             <section>
                 <h2>Classic Example</h2>
+                <p>Say we have an application that uses a rectangle object defined as follows:</p>
+                <pre>
+                    <code data-trim>
+var rectangle = {
+    length: 0,
+    width: 0
+};
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p>Later, we decide that this application has some requirement to work with squares.</p>
+                <p>We know that a square is a rectangle whose sides are equal in length. So it is decided to REPLACE the rectangle object with the seemingly comparable square.</p>
                 <pre>
                     <code data-trim>
 var square = {};
@@ -390,10 +407,12 @@ var square = {};
 })();
                     </code>
                 </pre>
-                <p>Sadly this actually violets the LSP when we try and use it out of context</p>
+                <p>We use property setters and getters to ensure that our square keeps in lengths and widths in sync.</p>
             </section>
             <section>
-                <h2>What about a rectangle?</h2>
+                <h2>What about our rectangle?</h2>
+                <p>Sadly it is discovered that when our application attempts to use this square in place of the initial rectangle. The area that the application later computes is incorrect</p>
+                <p>The following code is our area function</p>
                 <pre>
                     <code data-trim>
 var g = function(rectangle) {
@@ -405,16 +424,51 @@ var g = function(rectangle) {
 };
                     </code>
                 </pre>
+                <p>When we invoke this object with a square in place of the original rectangle - we end up with the product of 16 rather than the expected 12.</p>
+                <p>Our square breaks the LSP in respect to function g.</p>
             </section>
             <section>
-                <h3>Lets fix it</h3>
+                <h3>Fixing </h3>
+                <p>Correcting this type of situation would require the design of shape objects and the application which consumes them / its functions therein.</p>
+                <p>Perhaps a more flexible approach implement squares and rectangles in terms of polygons.</p>
+                <br>
+                <p>It's not about literal inheritance it's about BEHAVIOUR.  Just as a for hard drive connections - no matter which brand or size or style - the interface for the connection is ALWAYS compatible and "plugs in" just as any other </p>
             </section>
         </section>
         <section>
             <section>
-                <h2>Interface segregation principle</h2>
+                <h2>Interface segregation principle (ISP)</h2>
                 <p>
+                    "Clients should not be forced to depend on methods they do not use"<br><br>
+                    Similar to the SRP in that both deal with the cohesion of responsibility inside of an application. You could even say that the ISP is the application of the SRP to an objects public interface.
                 </p>
+                <p>An example of this is when clients depend upon objects which contain methods only consumed by other clients, OR are forced to implement unused methods in order to adhere to an interface.</p>
+                <br>
+                <p>Fundamentally we are concerned with the containment and access of "knowledge" within each object which composes our application.  In practice this is a very semantic thing.</p>
+            </section>
+            <section>
+                <h3>But wait - javascript doesn't have interfaces</h3>
+                <p>What is an interface? If by interfaces we mean some abstract type provided by the language to establish contracts and decoupling, then yes javascript does not have interfaces.</p>
+
+                <blockquote>
+                    Every operation declared by an object specifies the operation’s name, the objects it takes as parameters, and the operation’s return value. This is known as the operation’s signature. The set of all signatures defined by an object’s operations is called the interface to the object. An object’s interface characterizes the complete set of requests that can be sent to the object.
+                    <br>
+                    - Design Patterns - Elements of Resuable Object Oriented Software. Gamma et al.
+                </blockquote>
+            </section>
+            <section>
+                <h3>Mainly effects statically typed languages</h3>
+                <p>In statically-typed languages like C++ or Java you have direct consequences for not adhering to this ISP</p>
+                <ul>
+                    <li><b>Degenerate Implementations</b> - all methods MUST be declared by an implementation of an interface ( or it won't compile ) - so you end up having to stub out functions that do nothing - or throw exceptions based on misuse. </li>
+                    <li><b>Static Coupling</b> - In statically typed languages interfaces are fundamental to the overall design of a loosely coupled system.   </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Semantic Coupling</h3>
+                <blockquote>
+                    "The most insidious kind of coupling occurs when one module makes use, not of some syntactic element of another module, but of some semantic knowledge of another module's inner workings" - Code Complete
+                </blockquote>
             </section>
         </section>
         <section>
@@ -426,6 +480,31 @@ var g = function(rectangle) {
         </section>
     </div>
 </div>
+
+<script>
+    var square = {};
+    (function() {
+        var length = 0, width = 0;
+        Object.defineProperty(square, "length", {
+            get: function() { return length; },
+            set: function(value) { length = width = value; }
+        });
+        Object.defineProperty(square, "width", {
+            get: function() { return width; },
+            set: function(value) { length = width = value; }
+        });
+    })();
+
+
+    var g = function(rectangle) {
+        rectangle.length = 3;
+        rectangle.width = 4;
+        write(rectangle.length);
+        write(rectangle.width);
+        write(rectangle.length * rectangle.width);
+    };
+
+</script>
 
 <!--
 // finish SOLID

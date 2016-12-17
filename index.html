@@ -442,8 +442,9 @@ var g = function(rectangle) {
                     "Clients should not be forced to depend on methods they do not use"<br><br>
                     Similar to the SRP in that both deal with the cohesion of responsibility inside of an application. You could even say that the ISP is the application of the SRP to an objects public interface.
                 </p>
+            </section>
+            <section>
                 <p>An example of this is when clients depend upon objects which contain methods only consumed by other clients, OR are forced to implement unused methods in order to adhere to an interface.</p>
-                <br>
                 <p>Fundamentally we are concerned with the containment and access of "knowledge" within each object which composes our application.  In practice this is a very semantic thing.</p>
             </section>
             <section>
@@ -466,9 +467,23 @@ var g = function(rectangle) {
             </section>
             <section>
                 <h3>Semantic Coupling</h3>
+                <p>
+                    Semantic coupling is the interdependency that occurs when one portion of an object’s behavior is bound to another. When an object's interface specifics non-cohesive responsibilities it can be hard to make future adaptations - or cause a "ripple" which could potentially another client of the application.
+                </p>
                 <blockquote>
                     "The most insidious kind of coupling occurs when one module makes use, not of some syntactic element of another module, but of some semantic knowledge of another module's inner workings" - Code Complete
                 </blockquote>
+            </section>
+            <section>
+                <h2>More on Interfaces</h2>
+                <h4>Extensibility</h4>
+                <p>Well defined interfaces which have high cohesion determine play a large role in an applications ability to adapt to unforseen changes.</p>
+                <p>When an interface starts to require the implementation of many methods, it makes working with the library more cumbersome.  This is refered to "Fat" interfaces.</p>
+            </section>
+            <section>
+                <h4>Summary</h4>
+                <p>Overall because of the dynamic nature of javascript this principle does not have as many direct consequences and is more focused on the implementation details surrounding adhearing to the SRP.</p>
+                <p>Well thought out interface design is none-the-less very critical when writing medium to large scale applications which aim to be extensible.</p>
             </section>
         </section>
         <section>

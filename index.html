@@ -370,13 +370,44 @@ exports['@require'] = [
                 <h4>Contacts</h4>
                 <p>Use contacts to defined interfaces between caller and callee. A contracts can either manifest themselves are executable specifications ( in many compiled languages this is built in ) or with pre-conditions and error checking on misuse ( in languages like common js ).</p>
                 <h4>Avoid inheritance</h4>
-                <p>Inheritance leads to rigid architecture which is tightly coupled and hard to modify.  Prefer composition over inheretence.  There are two main advantages. Composition tends to lead to smaller more focused objects which thus are easier to maintain - and with traditional inheretence - because all types are directly derived from a base type - changes in the base type can inadvertantly cause issues downstream.</p>
+                <p>Deep inheritance trees  lead to rigid architecture which is tightly coupled and hard to modify.  Prefer composition over inheretence.  There are two main advantages. Composition tends to lead to smaller more focused objects which thus are easier to maintain - and with traditional inheretence - because all types are directly derived from a base type - changes in the base type can inadvertantly cause issues downstream.</p>
             </section>
             <section>
-                <h2>Implementation tightly coupled Tile in our angular product list view</h2>
+                <h2>Classic Example</h2>
+                <pre>
+                    <code data-trim>
+var square = {};
+(function() {
+    var length = 0, width = 0;
+    Object.defineProperty(square, "length", {
+        get: function() { return length; },
+        set: function(value) { length = width = value; }
+    });
+    Object.defineProperty(square, "width", {
+        get: function() { return width; },
+        set: function(value) { length = width = value; }
+    });
+})();
+                    </code>
+                </pre>
+                <p>Sadly this actually violets the LSP when we try and use it out of context</p>
             </section>
             <section>
-                <h2>abstract away the tile from the things inside the tile and make sub types</h2>
+                <h2>What about a rectangle?</h2>
+                <pre>
+                    <code data-trim>
+var g = function(rectangle) {
+    rectangle.length = 3;
+    rectangle.width = 4;
+    write(rectangle.length);
+    write(rectangle.width);
+    write(rectangle.length * rectangle.width);
+};
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h3>Lets fix it</h3>
             </section>
         </section>
         <section>

@@ -34,7 +34,6 @@
                     <li>See how these fundamental principles echo through best practices when using Angular JS ( but they apply to everything )</li>
                     <li>Use these things to make a ground up angular application</li>
                     <li>Deep Dive into Angular-UI // complexAngularApplicationGoesHere ???</li>
-                    <li>...</li>
                 </ul>
             </section>
             <section>
@@ -44,7 +43,6 @@
                     <li>Angular Overview - overview of angular specific terms and functionality. Understand how angular separates its concerns - and how to implement SOLID in the context of angular.</li>
                     <li>Build an angular application from the ground up - using and not using these principles to feel the difference</li>
                     <li>Where should we go from here? </li>
-                    <li>...</li>
                 </ul>
             </section>
         </section>
@@ -76,12 +74,18 @@
         </section>
 
         <section>
-            <p>
-                “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. <br><br>
-                If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. <br><br>
-                In the original experiment leading to the "Broken Window Theory," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within hours. By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), you don't want to be the first one to make a mess.”
-                <br> ― Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
-            </p>
+            <section>
+                <blockquote>
+                    “One broken window—a badly designed piece of code, a poor management decision that the team must live with for the duration of the project—is all it takes to start the decline. <br><br>
+                    If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. <br><br>
+                </blockquote>
+            </section>
+            <section>
+                <blockquote>
+                    In the original experiment leading to the "<a href="https://en.wikipedia.org/wiki/Broken_windows_theory">Broken Window Theory</a>," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within hours. By the same token, if you find yourself on a team and a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), you don't want to be the first one to make a mess.”
+                    <br> ― Andrew Hunt, The Pragmatic Programmer: From Journeyman to Master
+                </blockquote>
+            </section>
         </section>
         <section>
             <section>
@@ -478,7 +482,7 @@ var g = function(rectangle) {
                 <h2>More on Interfaces</h2>
                 <h4>Extensibility</h4>
                 <p>Well defined interfaces which have high cohesion determine play a large role in an applications ability to adapt to unforseen changes.</p>
-                <p>When an interface starts to require the implementation of many methods, it makes working with the library more cumbersome.  This is refered to "Fat" interfaces.</p>
+                <p>When an interface starts to require the implementation of many methods, it makes working with the library more cumbersome.  This is referred to "Fat" interfaces.</p>
             </section>
             <section>
                 <h4>Summary</h4>
@@ -490,42 +494,86 @@ var g = function(rectangle) {
             <section>
                 <h2>Dependency Inversion principle</h2>
                 <p>
+                    In a conventional dependency relationships - the direction of the relationship starts at the top with policy setting modules and move downward through lower level modules which hold implementation details. The depency inversion principle says that we should reverse this relationship - and in doing so aleivate the coupling between the modules.
+                </p>
+                <ul>
+                    <li>High-level modules should not depend on low-level modules. Both should depend on abstractions</li>
+                    <li>Abstractions should not depend on details. Details should depend on abstractions.</li>
+                </ul>
+                <p>
+                    In javascript there have been maybe phases of DI strategies employed inside of applications. <a href="http://blog.wolksoftware.com/the-current-state-of-dependency-inversion-in-javascript" target="_blank">This</a> article does a great job of summarized them all.
                 </p>
             </section>
+            <section>
+                <h3>High-level modules should not depend on low-level modules.</h3>
+                <p>In traditional N-tier application architecture a high level module would be something that encapsulated some business logic. e.g. logic around when something can be added to the cart</p>
+                <br>
+                <p>A low level module is something that provides some infrastructure or systems level function e.g. the knowledge of how to query an API to get some data</p>
+                <p>If the details of the process  ( adding to cart ) are contained in the abstraction that represents that behaviour we have broken this rule.  The abstraction should be independent of the details.</p>
+            </section>
+            <section>
+                <h3>Abstractions should not depend on details. Details should depend on abstractions</h3>
+                <p>In C++ you do not have a language level component to represent an interface, Instead class definitions ( variable and method signatures )  are stored in a header file.<br> This can sometimes lead to coupling between the abstraction - and the implementation depending on the context.</p>
+                <p>To alleviate this problem abstract super classes or base classes were introduced.  An abstract base class has no concrete implementation and only contains abstract methods which must be implemented by sub-types.</p>
+            </section>
+            <section>
+                <h3>Isn't this just injecting dependencies?</h3>
+                <p>NO!</p>
+                <br>
+                <p>Even with constructor injection you can still have a very highly coupled system ( think passing a configuration around through a series of objects )</p>
+                <p>Dependency Injection is a specific form of Inversion of Control.  This pattern separates the specifications for construction from the implementation of the object. Then generally uses a factory to consturct individual instances of this object on demand.</p>
+            </section>
+            <section>
+                <h3>Dependency Injection in action</h3>
+                <pre>
+                    <code>
+'use strict';
+angular.module('blueBuffaloVetPortalApp')
+.service('ClinicManager', [  '$http', 'apiConfig', '$q', function ($http, apiConfig, $q) {
+  function getAPIUrl(endpoint) {
+    return [apiConfig.api_url, apiConfig.api_prefix, endpoint].join('/');
+  }
+
+  this.getClinicFromToken = function () {
+    return $http.get(getAPIUrl('clinic/lookup'));
+  };
+}]);
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <h2>For why?</h2>
+            <ul>
+                <li>SOLID code is easy to test and loosely coupled</li>
+                <li>It is more resilient to human error</li>
+                <li>It is highly flexible thus gives you "future proofing" over core componenets in your application</li>
+            </ul>
+            <p>Nothing is very 100% SOLID out the gate unless there was very careful planing - very strict code review proccesses - and very experienced leadership out the gate. Even then - refactoring is a never ending processes as the world will never stop moving for the sake of our code.</p>
+        </section>
+        <section>
+            <h2>References</h2>
+            <ul>
+                <li>
+                    <a href="https://books.google.com/books/about/Clean_Code.html?id=hjEFCAAAQBAJ&hl=en">Clean Code - Robert C. Martin</a>
+                </li>
+                <li>
+                    <a href="https://books.google.com/books/about/Design_Patterns.html?id=6oHuKQe3TjQC&printsec=frontcover&source=kp_read_button#v=onepage&q&f=false">Design Patterns - Gamma et al.</a>
+                </li>
+                <li>
+                    <a href="http://martinfowler.com/books/eaa.html">Patterns of enterprise application architectur - Martin Fowler</a>
+                </li>
+                <li>
+                    <a href="https://books.google.com/books/about/The_Pragmatic_Programmer.html?id=5wBQEp6ruIAC&printsec=frontcover&source=kp_read_button#v=onepage&q&f=false">The Pragmatic Programmer - Andrew Hunt</a>
+                </li>
+                <li>
+                    <a href="http://aspiringcraftsman.com/">Aspiring Craftsman - Derek Greer</a>
+                </li>
+            </ul>
         </section>
     </div>
 </div>
 
-<script>
-    var square = {};
-    (function() {
-        var length = 0, width = 0;
-        Object.defineProperty(square, "length", {
-            get: function() { return length; },
-            set: function(value) { length = width = value; }
-        });
-        Object.defineProperty(square, "width", {
-            get: function() { return width; },
-            set: function(value) { length = width = value; }
-        });
-    })();
-
-
-    var g = function(rectangle) {
-        rectangle.length = 3;
-        rectangle.width = 4;
-        write(rectangle.length);
-        write(rectangle.width);
-        write(rectangle.length * rectangle.width);
-    };
-
-</script>
-
-<!--
-// finish SOLID
-// start LIFT
-//
--->
 <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
 <script src="node_modules/reveal.js/js/reveal.js"></script>
 
